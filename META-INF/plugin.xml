@@ -1,0 +1,36 @@
+<idea-plugin version="2">
+  <idea-version since-build="117.117" />
+  <name>Sql Generator</name>
+  <description>
+    <![CDATA[
+<html>
+DataSource extention plugin.
+<p/>
+following sql statement generator.
+<ul>
+<li>INSERT</li>
+<li>UPDATE(condition by primary key)</li>
+<li>DELETE(condition by primary key)</li>
+</ul>
+</html>
+]]>
+  </description>
+  <version>1.0</version>
+  <vendor>siosio</vendor>
+  <depends>com.intellij.modules.xml</depends>
+  <depends>com.intellij.modules.ultimate</depends>
+  <depends>com.intellij.persistence.database</depends>
+  <category>Web/JavaEE Technologies</category>
+
+  <application-components>
+  </application-components>
+
+  <project-components>
+  </project-components>
+
+  <actions>
+    <action id="GenerateSQL" class="siosio.sqlgenerator.SqlGeneratorAction">
+      <add-to-group group-id="DatabaseViewPopupMenu" anchor="last" />
+    </action>
+  </actions>
+</idea-plugin>
