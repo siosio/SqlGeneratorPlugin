@@ -4,12 +4,6 @@ import java.util.List;
 
 import com.intellij.persistence.database.psi.DbColumnElement;
 
-/**
- * UPDATE文を生成するためのアクション。
- *
- * @author siosio
- * @since 1.0
- */
 public class UpdateAction extends SqlGeneratorSupport {
 
     private static final SqlGenerator GENERATOR = new UpdateGenerator();

@@ -5,13 +5,13 @@ import java.awt.datatransfer.StringSelection;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.ide.CopyPasteManager;
+import com.intellij.persistence.database.TableType;
 import com.intellij.persistence.database.psi.DbTableElement;
 import com.intellij.persistence.database.view.DatabaseView;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class SqlGeneratorSupport extends AnAction {
 
-    /** 改行文字 */
     protected static final String LF = System.getProperty("line.separator");
 
     public SqlGeneratorSupport(@Nullable String text) {
@@ -28,7 +28,9 @@ public abstract class SqlGeneratorSupport extends AnAction {
 
         StringBuilder sql = new StringBuilder();
         for (Object table : tables) {
-            if (!(table instanceof DbTableElement)) {
+            if (!(table instanceof DbTableElement) || (((DbTableElement) table).getTableType() != TableType.TABLE
+                                                               && ((DbTableElement) table).getTableType()
+                    != TableType.VIEW)) {
                 continue;
             }
             TableInfo tableInfo = new TableInfo((DbTableElement) table);

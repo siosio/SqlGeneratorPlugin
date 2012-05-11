@@ -7,7 +7,6 @@ import com.intellij.persistence.database.psi.DbElement;
 
 public class InsertAction extends SqlGeneratorSupport {
 
-    /** INSERT文を生成する{@link SqlGenerator} */
     private static final SqlGenerator GENERATOR = new InsertAction.InsertGenerator();
 
     public InsertAction() {
@@ -16,7 +15,7 @@ public class InsertAction extends SqlGeneratorSupport {
 
     @Override
     SqlGenerator createSqlGenerator() {
-        return new InsertAction.InsertGenerator();
+        return GENERATOR;
     }
 
     @Override
@@ -31,7 +30,7 @@ public class InsertAction extends SqlGeneratorSupport {
             StringBuilder sql = new StringBuilder();
 
             sql.append("INSERT INTO ").append(LF);
-            sql.append(tableInfo.getTableName()).append(LF);
+            sql.append("    ").append(tableInfo.getTableName()).append(LF);
             sql.append("    (").append(LF);
             StringBuilder values = new StringBuilder();
             List<? extends DbColumnElement> columns = tableInfo.getColumns();
