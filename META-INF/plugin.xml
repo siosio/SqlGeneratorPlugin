@@ -9,7 +9,7 @@ generate the following SQL statement.
 <ul>
 <li>INSERT</li>
 <li>UPDATE(condition by primary key)</li>
-<!--<li>DELETE(condition by primary key)</li>-->
+<li>DELETE(condition by primary key)</li>
 </ul>
 </html>
 ]]>

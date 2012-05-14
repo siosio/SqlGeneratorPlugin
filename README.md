@@ -5,3 +5,4 @@ generate SQL statement(SQL of following list) from selected table.
 
 * INSERT statement
 * UPDATE statement(condition by primary key)
+* DELETE statement(condition by primary key)

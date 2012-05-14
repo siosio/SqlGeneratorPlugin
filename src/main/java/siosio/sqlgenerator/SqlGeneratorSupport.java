@@ -12,8 +12,6 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class SqlGeneratorSupport extends AnAction {
 
-    protected static final String LF = System.getProperty("line.separator");
-
     public SqlGeneratorSupport(@Nullable String text) {
         super(text);
     }
@@ -36,7 +34,7 @@ public abstract class SqlGeneratorSupport extends AnAction {
             TableInfo tableInfo = new TableInfo((DbTableElement) table);
             sql.append(createHeader(getStatementType(), tableInfo));
             sql.append(createSqlGenerator().generate(tableInfo));
-            sql.append(LF);
+            sql.append(Util.LF);
         }
         CopyPasteManager.getInstance().setContents(new StringSelection(sql.toString()));
     }
@@ -57,9 +55,11 @@ public abstract class SqlGeneratorSupport extends AnAction {
      */
     protected String createHeader(String statementType, TableInfo tableInfo) {
         StringBuilder builder = new StringBuilder();
-        builder.append("--------------------------------------------------------------------------------").append(LF);
-        builder.append("-- ").append(statementType).append(":").append(tableInfo.getTableName()).append(LF);
-        builder.append("--------------------------------------------------------------------------------").append(LF);
+        builder.append("--------------------------------------------------------------------------------").append(
+                Util.LF);
+        builder.append("-- ").append(statementType).append(":").append(tableInfo.getTableName()).append(Util.LF);
+        builder.append("--------------------------------------------------------------------------------").append(
+                Util.LF);
         return builder.toString();
     }
 
@@ -70,6 +70,13 @@ public abstract class SqlGeneratorSupport extends AnAction {
      */
     abstract SqlGenerator createSqlGenerator();
 
+    /**
+     * SQL文のタイプを表す文字列を返す。
+     * <p/>
+     * ここで返されたSQL文のタイプは、各SQL文のヘッダコメントに使用する。
+     *
+     * @return SQLタイプ
+     */
     abstract String getStatementType();
 }
 

@@ -7,10 +7,10 @@ import com.intellij.persistence.database.psi.DbElement;
 
 public class InsertSqlGeneratorAction extends SqlGeneratorSupport {
 
-    private static final SqlGenerator GENERATOR = new InsertSqlGeneratorAction.InsertGenerator();
+    private static final SqlGenerator GENERATOR = new InsertSqlGenerator();
 
     public InsertSqlGeneratorAction() {
-        super("INSERT");
+        super("INSERT SQL");
     }
 
     @Override
@@ -23,11 +23,12 @@ public class InsertSqlGeneratorAction extends SqlGeneratorSupport {
         return "INSERT";
     }
 
-    private static final String SQL_TEMPLATE =
-            "INSERT INTO\n" + "    $TABLE_NAME$\n" + "    (\n" + "$COLUMN_LIST$\n" + "    )\n" + "VALUES\n" + "    (\n"
-                    + "$VALUE_LIST$\n" + "    )\n";
 
-    public static class InsertGenerator implements SqlGenerator {
+    public static class InsertSqlGenerator implements SqlGenerator {
+
+        private static final String SQL_TEMPLATE =
+                "INSERT INTO\n" + "    $TABLE_NAME$\n" + "    (\n" + "$COLUMN_LIST$\n" + "    )\n" + "VALUES\n"
+                        + "    (\n" + "$VALUE_LIST$\n" + "    )\n";
 
         @Override
         public String generate(TableInfo tableInfo) {
@@ -37,8 +38,8 @@ public class InsertSqlGeneratorAction extends SqlGeneratorSupport {
             for (int i = 0, size = columns.size(); i < size; i++) {
                 DbElement column = columns.get(i);
                 if (i != 0) {
-                    columnList.append(",").append(LF);
-                    valueList.append(",").append(LF);
+                    columnList.append(",").append(Util.LF);
+                    valueList.append(",").append(Util.LF);
                 }
                 valueList.append("    ?");
                 columnList.append("    ").append(column.getName());
