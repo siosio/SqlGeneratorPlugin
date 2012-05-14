@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.intellij.persistence.database.psi.DbColumnElement;
 
-public class UpdateAction extends SqlGeneratorSupport {
+public class UpdateSqlGeneratorAction extends SqlGeneratorSupport {
 
     private static final SqlGenerator GENERATOR = new UpdateGenerator();
 
-    public UpdateAction() {
+    public UpdateSqlGeneratorAction() {
         super("UPDATE");
     }
 
@@ -22,41 +22,42 @@ public class UpdateAction extends SqlGeneratorSupport {
         return GENERATOR;
     }
 
+    private static final String SQL_TEMPLATE =
+            "UPDATE\n" + "    $TABLE_NAME$\n" + "SET\n" + "$SET_LIST$\n" + "$WHERE_LIST$\n";
+
     private static class UpdateGenerator implements SqlGenerator {
 
         @Override
         public String generate(TableInfo tableInfo) {
-            StringBuilder sql = new StringBuilder();
 
             List<? extends DbColumnElement> columns = tableInfo.getNonPrimaryColumns();
-            List<DbColumnElement> primaryKeys = tableInfo.getPrimaryKeys();
-
-            sql.append("UPDATE").append(LF);
-            sql.append("    ").append(tableInfo.getTableName()).append(LF);
-            sql.append("SET").append(LF);
-
+            StringBuilder setList = new StringBuilder();
             for (int i = 0, size = columns.size(); i < size; i++) {
                 DbColumnElement column = columns.get(i);
                 if (i != 0) {
-                    sql.append(",").append(LF);
+                    setList.append(",").append(LF);
                 }
-                sql.append("    ").append(column.getName()).append(" = ?");
-            }
-            sql.append(LF);
-            if (primaryKeys.isEmpty()) {
-                return sql.toString();
+                setList.append("    ").append(column.getName()).append(" = ?");
             }
 
-            sql.append("WHERE").append(LF);
+            String sql = SQL_TEMPLATE.replace("$TABLE_NAME$", tableInfo.getTableName()).replace("$SET_LIST$", setList);
+
+            List<DbColumnElement> primaryKeys = tableInfo.getPrimaryKeys();
+            if (primaryKeys.isEmpty()) {
+                return sql;
+            }
+
+            StringBuilder whereList = new StringBuilder();
+            whereList.append("WHERE").append(LF);
             for (int i = 0, size = primaryKeys.size(); i < size; i++) {
                 DbColumnElement key = primaryKeys.get(i);
-                sql.append("    ");
+                whereList.append("    ");
                 if (i != 0) {
-                    sql.append("AND ");
+                    whereList.append("AND ");
                 }
-                sql.append(key.getName()).append(" = ?").append(LF);
+                whereList.append(key.getName()).append(" = ?").append(LF);
             }
-            return sql.toString();
+            return sql.replace("$WHERE_LIST$", whereList);
         }
     }
 }
