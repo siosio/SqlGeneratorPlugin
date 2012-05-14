@@ -33,14 +33,14 @@ public class SelectSqlGeneratorAction extends SqlGeneratorSupport {
 
         @Override
         public String generate(TableInfo tableInfo) {
-            List<DbColumnElement> columns = tableInfo.getNonPrimaryColumns();
+            List<? extends DbColumnElement> columns = tableInfo.getColumns();
             StringBuilder columnList = new StringBuilder();
             for (int i = 0; i < columns.size(); i++) {
                 DbColumnElement column = columns.get(i);
                 if (i != 0) {
-                    columnList.append(",");
+                    columnList.append(",").append(Util.LF);
                 }
-                columnList.append("    ").append(column.getName()).append(Util.LF);
+                columnList.append("    ").append(column.getName());
             }
             return SQL_TEMPLATE.replace("$TABLE_NAME$", tableInfo.getTableName())
                     .replace("$COLUMN_LIST$", columnList)

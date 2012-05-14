@@ -17,7 +17,6 @@ generate the following SQL statement.
   </description>
   <version>0.51</version>
   <vendor>siosio</vendor>
-  <depends>com.intellij.modules.xml</depends>
   <depends>com.intellij.modules.ultimate</depends>
   <depends>com.intellij.persistence.database</depends>
   <category>Web/JavaEE Technologies</category>
