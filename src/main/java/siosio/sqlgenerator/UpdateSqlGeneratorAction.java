@@ -25,7 +25,11 @@ public class UpdateSqlGeneratorAction extends SqlGeneratorSupport {
     private static class UpdateSqlGenerator implements SqlGenerator {
 
         private static final String SQL_TEMPLATE =
-                "UPDATE\n" + "    $TABLE_NAME$\n" + "SET\n" + "$SET_LIST$\n" + "$WHERE_LIST$\n";
+                "UPDATE\n"
+                + "    $TABLE_NAME$\n"
+                + "SET\n"
+                + "$SET_LIST$\n"
+                + "$WHERE_LIST$\n";
 
 
         @Override

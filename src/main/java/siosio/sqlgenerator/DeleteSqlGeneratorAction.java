@@ -24,7 +24,10 @@ public class DeleteSqlGeneratorAction extends SqlGeneratorSupport {
 
     private static class DeleteSqlGenerator implements SqlGenerator {
 
-        private static final String SQL_TEMPLATE = "DELETE FROM\n" + "    $TABLE_NAME$\n" + "$WHERE_LIST$\n";
+        private static final String SQL_TEMPLATE =
+                "DELETE FROM\n"
+                + "    $TABLE_NAME$\n"
+                + "$WHERE_LIST$\n";
 
         @Override
         public String generate(TableInfo tableInfo) {

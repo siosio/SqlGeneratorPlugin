@@ -27,8 +27,15 @@ public class InsertSqlGeneratorAction extends SqlGeneratorSupport {
     public static class InsertSqlGenerator implements SqlGenerator {
 
         private static final String SQL_TEMPLATE =
-                "INSERT INTO\n" + "    $TABLE_NAME$\n" + "    (\n" + "$COLUMN_LIST$\n" + "    )\n" + "VALUES\n"
-                        + "    (\n" + "$VALUE_LIST$\n" + "    )\n";
+                "INSERT INTO\n"
+                + "    $TABLE_NAME$\n"
+                + "    (\n"
+                + "$COLUMN_LIST$\n"
+                + "    )\n"
+                + "VALUES\n"
+                + "    (\n"
+                + "$VALUE_LIST$\n"
+                + "    )\n";
 
         @Override
         public String generate(TableInfo tableInfo) {

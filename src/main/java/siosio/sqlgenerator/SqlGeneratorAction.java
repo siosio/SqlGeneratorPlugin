@@ -49,8 +49,8 @@ public class SqlGeneratorAction extends ActionGroup {
 
     @NotNull
     public AnAction[] getChildren(@Nullable AnActionEvent event) {
-        return new AnAction[]{new InsertSqlGeneratorAction(), new UpdateSqlGeneratorAction(),
-                new DeleteSqlGeneratorAction()};
+        return new AnAction[]{new SelectSqlGeneratorAction(), new InsertSqlGeneratorAction(),
+                new UpdateSqlGeneratorAction(), new DeleteSqlGeneratorAction()};
     }
 }
 
