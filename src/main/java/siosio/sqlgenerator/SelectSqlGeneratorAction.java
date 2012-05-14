@@ -25,11 +25,11 @@ public class SelectSqlGeneratorAction extends SqlGeneratorSupport {
     public static class SelectSqlGenerator implements SqlGenerator {
 
         private static final String SQL_TEMPLATE =
-                "SELECT\n"
-                + "$COLUMN_LIST$\n"
-                + "FROM\n"
-                + "    $TABLE_NAME$\n"
-                + "$WHERE_LIST$";
+                "SELECT" + Util.LF
+                + "$COLUMN_LIST$" + Util.LF
+                + "FROM" + Util.LF
+                + "    $TABLE_NAME$" + Util.LF
+                + "$WHERE_LIST$" + Util.LF;
 
         @Override
         public String generate(TableInfo tableInfo) {
@@ -40,7 +40,7 @@ public class SelectSqlGeneratorAction extends SqlGeneratorSupport {
                 if (i != 0) {
                     columnList.append(",");
                 }
-                columnList.append("    ").append(column.getName());
+                columnList.append("    ").append(column.getName()).append(Util.LF);
             }
             return SQL_TEMPLATE.replace("$TABLE_NAME$", tableInfo.getTableName())
                     .replace("$COLUMN_LIST$", columnList)

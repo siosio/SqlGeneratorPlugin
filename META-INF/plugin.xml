@@ -15,7 +15,7 @@ generate the following SQL statement.
 </html>
 ]]>
   </description>
-  <version>0.5</version>
+  <version>0.51</version>
   <vendor>siosio</vendor>
   <depends>com.intellij.modules.xml</depends>
   <depends>com.intellij.modules.ultimate</depends>
