@@ -7,6 +7,7 @@
 Data Source extension plugin.
 generate the following SQL statement.
 <ul>
+<li>SELECT(condition by primary key)</li>
 <li>INSERT</li>
 <li>UPDATE(condition by primary key)</li>
 <li>DELETE(condition by primary key)</li>
