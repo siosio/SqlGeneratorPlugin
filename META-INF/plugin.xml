@@ -15,7 +15,7 @@ generate the following SQL statement.
 </html>
 ]]>
   </description>
-  <version>0.51</version>
+  <version>0.6</version>
   <vendor>siosio</vendor>
   <depends>com.intellij.modules.ultimate</depends>
   <depends>com.intellij.persistence.database</depends>
@@ -32,4 +32,4 @@ generate the following SQL statement.
       <add-to-group group-id="DatabaseViewPopupMenu" anchor="last" />
     </action>
   </actions>
-</idea-plugin>
+</idea-plugin><!---->

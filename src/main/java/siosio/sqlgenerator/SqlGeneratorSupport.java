@@ -26,14 +26,31 @@ public abstract class SqlGeneratorSupport extends AnAction {
 
         StringBuilder sql = new StringBuilder();
         for (Object table : tables) {
-            if (!(table instanceof DbTableElement) || (((DbTableElement) table).getTableType() != TableType.TABLE
-                                                               && ((DbTableElement) table).getTableType()
-                    != TableType.VIEW)) {
+            if (!(table instanceof DbTableElement)
+                    || (((DbTableElement) table).getTableType() != TableType.TABLE
+                    && ((DbTableElement) table).getTableType() != TableType.VIEW)) {
                 continue;
             }
             TableInfo tableInfo = new TableInfo((DbTableElement) table);
+            String sqlTemplate = getSqlTemplate();
+            // table name
+            sqlTemplate = sqlTemplate.replaceAll("\\$TABLE_NAME\\$", tableInfo.getTableName());
+
+            // column list
+            SqlGenerator generator = createSqlGenerator(tableInfo);
+            sqlTemplate = sqlTemplate.replaceAll("\\$COLUMN_LIST\\$", generator.getColumnList());
+
+            // where clause
+            sqlTemplate = sqlTemplate.replaceAll("\\$WHERE_CLAUSE\\$", generator.getWhereClause());
+
+            // insert values
+            sqlTemplate = sqlTemplate.replaceAll("\\$INSERT_VALUES\\$", generator.getInsertValues());
+
+            // set clause
+            sqlTemplate = sqlTemplate.replaceAll("\\$SET_CLAUSE\\$", generator.getSetClause());
+
             sql.append(createHeader(getStatementType(), tableInfo));
-            sql.append(createSqlGenerator().generate(tableInfo));
+            sql.append(sqlTemplate);
             sql.append(Util.LF);
         }
         CopyPasteManager.getInstance().setContents(new StringSelection(sql.toString()));
@@ -66,9 +83,12 @@ public abstract class SqlGeneratorSupport extends AnAction {
     /**
      * SQLを生成する{@link SqlGenerator}の実装クラスを生せうする。
      *
+     * @param tableInfo テーブル情報
      * @return {@link SqlGenerator}
      */
-    abstract SqlGenerator createSqlGenerator();
+    protected SqlGenerator createSqlGenerator(TableInfo tableInfo) {
+        return new SqlGenerator(tableInfo);
+    }
 
     /**
      * SQL文のタイプを表す文字列を返す。
@@ -78,5 +98,7 @@ public abstract class SqlGeneratorSupport extends AnAction {
      * @return SQLタイプ
      */
     abstract String getStatementType();
+
+    abstract String getSqlTemplate();
 }
 

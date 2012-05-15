@@ -1,20 +1,9 @@
 package siosio.sqlgenerator;
 
-import java.util.List;
-
-import com.intellij.persistence.database.psi.DbColumnElement;
-
 public class SelectSqlGeneratorAction extends SqlGeneratorSupport {
 
     public SelectSqlGeneratorAction() {
         super("SELECT SQL");
-    }
-
-    private static final SqlGenerator GENERATOR = new SelectSqlGenerator();
-
-    @Override
-    SqlGenerator createSqlGenerator() {
-        return GENERATOR;
     }
 
     @Override
@@ -22,29 +11,13 @@ public class SelectSqlGeneratorAction extends SqlGeneratorSupport {
         return "SELECT";
     }
 
-    public static class SelectSqlGenerator implements SqlGenerator {
-
-        private static final String SQL_TEMPLATE =
-                "SELECT" + Util.LF
+    @Override
+    String getSqlTemplate() {
+        return  "SELECT" + Util.LF
                 + "$COLUMN_LIST$" + Util.LF
                 + "FROM" + Util.LF
                 + "    $TABLE_NAME$" + Util.LF
-                + "$WHERE_LIST$" + Util.LF;
-
-        @Override
-        public String generate(TableInfo tableInfo) {
-            List<? extends DbColumnElement> columns = tableInfo.getColumns();
-            StringBuilder columnList = new StringBuilder();
-            for (int i = 0; i < columns.size(); i++) {
-                DbColumnElement column = columns.get(i);
-                if (i != 0) {
-                    columnList.append(",").append(Util.LF);
-                }
-                columnList.append("    ").append(column.getName());
-            }
-            return SQL_TEMPLATE.replace("$TABLE_NAME$", tableInfo.getTableName())
-                    .replace("$COLUMN_LIST$", columnList)
-                    .replace("$WHERE_LIST$", Util.makeWhereClause(tableInfo.getPrimaryKeys()));
-        }
+                + "$WHERE_CLAUSE$" + Util.LF;
     }
 }
+
