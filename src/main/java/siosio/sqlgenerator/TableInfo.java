@@ -8,7 +8,7 @@ import com.intellij.persistence.database.psi.DbTableElement;
 
 public class TableInfo {
 
-    private DbTableElement tableElement;
+    private final DbTableElement tableElement;
 
     private List<DbColumnElement> columns;
 

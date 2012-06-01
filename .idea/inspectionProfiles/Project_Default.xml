@@ -873,6 +873,7 @@
     <inspection_tool class="GroovyWhileLoopSpinsOnField" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="ignoreNonEmtpyLoops" value="false" />
     </inspection_tool>
+    <inspection_tool class="GspInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="GtkPreferredJComboBoxRenderer" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="HardCodedStringLiteral" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="ignoreForAssertStatements" value="true" />
@@ -1037,6 +1038,7 @@
       <option name="ignoreInterfacesThatOnlyDeclareConstants" value="false" />
     </inspection_tool>
     <inspection_tool class="InterfaceWithOnlyOneDirectInheritor" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="InvalidI18nProperty" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="InvalidImplementedBy" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="InvalidProvidedBy" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="InvalidRequestParameters" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1377,6 +1379,7 @@
     </inspection_tool>
     <inspection_tool class="MutatorLikeMethodIsParameterless" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NakedNotify" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="NameBooleanParameters" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NativeMethods" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NegatedConditional" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="m_ignoreNegatedNullComparison" value="true" />
@@ -1414,6 +1417,7 @@
     <inspection_tool class="NoExplicitFinalizeCalls" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NoLabelFor" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="NoScrollPane" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="NoTailRecursionAnnotation" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NonAtomicOperationOnVolatileField" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NonBlockStatementBodyJS" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="NonBooleanMethodNameMayNotStartWithQuestion" enabled="false" level="WARNING" enabled_by_default="false">
@@ -1745,7 +1749,8 @@
     <inspection_tool class="ReadResolveAndWriteReplaceProtected" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="RecordStoreResource" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="RedundantArrayCreation" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="RedundantCast" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="RedundantCast" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RedundantConversion" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="RedundantFieldInitialization" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="RedundantImplements" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreSerializable" value="false" />
@@ -1764,6 +1769,7 @@
     <inspection_tool class="RedundantTypeConversion" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="CHECK_ANY" value="false" />
     </inspection_tool>
+    <inspection_tool class="ReferenceMustBePrefixed" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ReferencesToClassesFromDefaultPackagesInJSPFile" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ReflectionForUnavailableAnnotation" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="RefusedBequest" enabled="false" level="WARNING" enabled_by_default="false">

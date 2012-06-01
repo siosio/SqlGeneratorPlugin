@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 public class SqlGeneratorAction extends ActionGroup {
 
     public SqlGeneratorAction() {
-        super("Generate SQL", true);
+        super("Generate and Copy SQL", true);
     }
 
     @Override
@@ -50,7 +50,9 @@ public class SqlGeneratorAction extends ActionGroup {
     @NotNull
     public AnAction[] getChildren(@Nullable AnActionEvent event) {
         return new AnAction[]{new SelectSqlGeneratorAction(), new InsertSqlGeneratorAction(),
-                new UpdateSqlGeneratorAction(), new DeleteSqlGeneratorAction()};
+                new InsertSqlGeneratorAction.NamedParameterSqlGeneratorAction(),
+                new UpdateSqlGeneratorAction(), new DeleteSqlGeneratorAction()
+        };
     }
 }
 

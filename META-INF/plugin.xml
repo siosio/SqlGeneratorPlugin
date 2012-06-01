@@ -8,14 +8,15 @@ Data Source extension plugin.
 generate the following SQL statement.
 <ul>
 <li>SELECT(condition by primary key)</li>
-<li>INSERT</li>
+<li>INSERT(placeholder is '?'.)</li>
+<li>INSERT(placeholder is named parameter)</li>
 <li>UPDATE(condition by primary key)</li>
 <li>DELETE(condition by primary key)</li>
 </ul>
 </html>
 ]]>
   </description>
-  <version>0.6</version>
+  <version>0.7</version>
   <vendor>siosio</vendor>
   <depends>com.intellij.modules.ultimate</depends>
   <depends>com.intellij.persistence.database</depends>
@@ -32,4 +33,4 @@ generate the following SQL statement.
       <add-to-group group-id="DatabaseViewPopupMenu" anchor="last" />
     </action>
   </actions>
-</idea-plugin><!---->
+</idea-plugin>

@@ -7,7 +7,7 @@ import com.intellij.persistence.database.psi.DbElement;
 
 public class SqlGenerator {
 
-    private TableInfo tableInfo;
+    private final TableInfo tableInfo;
 
     protected SqlGenerator(TableInfo tableInfo) {
         this.tableInfo = tableInfo;
