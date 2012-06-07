@@ -238,7 +238,7 @@
             <filter-element type="OBJECT" id="dblink" selected="true" />
           </any-schema>
         </basic-filter>
-        <smart-filter>
+        <extended-filter>
           <filter-element type="RESERVED_WORD" id="keyword" selected="true" />
           <filter-element type="RESERVED_WORD" id="function" selected="true" />
           <filter-element type="RESERVED_WORD" id="parameter" selected="true" />
@@ -296,7 +296,7 @@
             <filter-element type="OBJECT" id="cluster" selected="true" />
             <filter-element type="OBJECT" id="dblink" selected="true" />
           </any-schema>
-        </smart-filter>
+        </extended-filter>
       </filters>
       <sorting enabled="true">
         <sorting-element type="RESERVED_WORD" id="keyword" />

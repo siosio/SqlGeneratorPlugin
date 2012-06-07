@@ -8,15 +8,14 @@ Data Source extension plugin.
 generate the following SQL statement.
 <ul>
 <li>SELECT(condition by primary key)</li>
-<li>INSERT(placeholder is '?'.)</li>
-<li>INSERT(placeholder is named parameter)</li>
+<li>INSERT</li>
 <li>UPDATE(condition by primary key)</li>
 <li>DELETE(condition by primary key)</li>
 </ul>
 </html>
 ]]>
   </description>
-  <version>0.7</version>
+  <version>1.0</version>
   <vendor>siosio</vendor>
   <depends>com.intellij.modules.ultimate</depends>
   <depends>com.intellij.persistence.database</depends>

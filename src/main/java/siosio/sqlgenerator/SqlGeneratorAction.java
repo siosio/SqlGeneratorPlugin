@@ -49,9 +49,10 @@ public class SqlGeneratorAction extends ActionGroup {
 
     @NotNull
     public AnAction[] getChildren(@Nullable AnActionEvent event) {
-        return new AnAction[]{new SelectSqlGeneratorAction(), new InsertSqlGeneratorAction(),
-                new InsertSqlGeneratorAction.NamedParameterSqlGeneratorAction(),
-                new UpdateSqlGeneratorAction(), new DeleteSqlGeneratorAction()
+        return new AnAction[]{new SelectSqlGeneratorAction(), new SelectSqlGeneratorAction.NamedParameterSqlGeneratorAction(),
+                new InsertSqlGeneratorAction(), new InsertSqlGeneratorAction.NamedParameterSqlGeneratorAction(),
+                new UpdateSqlGeneratorAction(), new UpdateSqlGeneratorAction.NamedParameterSqlGeneratorAction(),
+                new DeleteSqlGeneratorAction(), new DeleteSqlGeneratorAction.NamedParameterSqlGeneratorAction()
         };
     }
 }
